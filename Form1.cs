@@ -12,6 +12,12 @@ namespace Graphics_lab6
 {
     public partial class MainForm : Form
     {
+        int appert = 2;
+        double sigma = 0.3;
+
+        double[] kernelGauss;
+        double[] kernelMedian;
+
         public MainForm()
         {
             InitializeComponent();
@@ -95,6 +101,28 @@ namespace Graphics_lab6
         private void TabControl1_Selected(object sender, TabControlEventArgs e)
         {
             LoadMini();
+            CountSigma();
+        }
+
+        private void CountSigma()
+        {
+            sigma = Math.Round((double)appert / 3, 1);
+            CountKernelGauss();
+        }
+
+        private void CountKernelGauss()
+        {
+            int n = 2 * appert + 1;
+
+            double[] kernel = new double[Convert.ToInt16(Math.Pow(n, 2))];
+
+            for (int i = -appert; i < appert + 1; i++)
+            {
+                for (int j = -appert; j < appert + 1; j++) 
+                {
+                    kernel[(i + appert) * n + j + appert] = Math.Exp(-(i * i + j * j) / (2 * sigma * sigma)) / (2 * sigma * sigma * Math.PI);
+                }
+            }
         }
     }
 }
