@@ -12,11 +12,10 @@ namespace Graphics_lab6
 {
     public partial class MainForm : Form
     {
-        int appert = 8;
+        int apert = 1;
         double sigma = 0.3;
 
         double[] kernelGauss;
-        double[] kernelMedian;
 
         public MainForm()
         {
@@ -62,9 +61,9 @@ namespace Graphics_lab6
                         int R, G, B;
                         int value = rand.Next(-val, val + 1);
 
-                        R = pixel.R + value;
-                        G = pixel.G + value;
-                        B = pixel.B + value;
+                        R = pixel.R + rand.Next(-val, val + 1);
+                        G = pixel.G + rand.Next(-val, val + 1);
+                        B = pixel.B + rand.Next(-val, val + 1);
 
                         img.SetPixel(x, y, Color.FromArgb(pixel.A, NormalizeColor(R), NormalizeColor(G), NormalizeColor(B)));
 
@@ -98,31 +97,35 @@ namespace Graphics_lab6
             }
         }
 
-        private void TabControl1_Selected(object sender, TabControlEventArgs e)
+        private void TabControl_Selected(object sender, TabControlEventArgs e)
         {
             LoadMini();
             CountSigma();
 
-            FilterGauss();
+            if (tabControl.SelectedIndex == 1)
+            {
+                FilterGauss();
+                FilterMedian();
+            }
         }
 
         private void CountSigma()
         {
-            sigma = Math.Round((double)appert / 3, 1);
+            sigma = Math.Round((double)apert / 3, 1);
             CountKernelGauss();
         }
 
         private void CountKernelGauss()
         {
-            int n = 2 * appert + 1;
+            int n = 2 * apert + 1;
 
             double[] kernel = new double[Convert.ToInt16(Math.Pow(n, 2))];
 
-            for (int i = -appert; i < appert + 1; i++)
+            for (int i = -apert; i < apert + 1; i++)
             {
-                for (int j = -appert; j < appert + 1; j++) 
+                for (int j = -apert; j < apert + 1; j++) 
                 {
-                    kernel[(i + appert) * n + j + appert] = Math.Exp(-(i * i + j * j) / (2 * sigma * sigma)) / (2 * sigma * sigma * Math.PI);
+                    kernel[(i + apert) * n + j + apert] = Math.Exp(-(i * i + j * j) / (2 * sigma * sigma)) / (2 * sigma * sigma * Math.PI);
                 }
             }
 
@@ -133,7 +136,7 @@ namespace Graphics_lab6
         {
             Bitmap imgStart = new Bitmap(pictureBoxNoise.Image);
 
-            Bitmap img = new Bitmap(imgStart.Width + appert * 2, imgStart.Height + appert * 2);
+            Bitmap img = new Bitmap(imgStart.Width + apert * 2, imgStart.Height + apert * 2);
 
             for (int i = 0; i < img.Width; i++)
             {
@@ -141,30 +144,30 @@ namespace Graphics_lab6
                 {
                     int x, y;
 
-                    if (i < appert)
+                    if (i < apert)
                     {
                         x = 0;
                     }
-                    else if (i >= appert + imgStart.Width)
+                    else if (i >= apert + imgStart.Width)
                     {
                         x = imgStart.Width - 1;
                     }
                     else
                     {
-                        x = i - appert;
+                        x = i - apert;
                     }
 
-                    if (j < appert)
+                    if (j < apert)
                     {
                         y = 0;
                     }
-                    else if (j >= appert + imgStart.Height)
+                    else if (j >= apert + imgStart.Height)
                     {
                         y = imgStart.Height - 1;
                     }
                     else
                     {
-                        y = j - appert;
+                        y = j - apert;
                     }
 
                     img.SetPixel(i, j, imgStart.GetPixel(x, y));
@@ -179,7 +182,7 @@ namespace Graphics_lab6
             Bitmap imgNoise = MakeImgWithBordersCopy();
             Bitmap img = new Bitmap(pictureBoxNoise.Image);
 
-            int n = appert * 2 + 1;
+            int n = apert * 2 + 1;
 
             for (int i = 0; i < img.Width; i++)
             {
@@ -206,6 +209,82 @@ namespace Graphics_lab6
             }
 
             pictureBoxGauss.Image = img;
+        }
+
+
+        private int Partition(int[] array, int minIndex, int maxIndex)
+        {
+            int pivot = minIndex - 1;
+
+            for (int i = minIndex; i < maxIndex; i++)
+            {
+                if (array[i] < array[maxIndex])
+                {
+                    pivot++;
+                    (array[pivot], array[i]) = (array[i], array[pivot]);
+                }
+            }
+
+            pivot++;
+
+            (array[pivot], array[maxIndex]) = (array[maxIndex], array[pivot]);
+
+            return pivot;
+        }
+
+        private int[] QuickSort(int[] array, int minIndex, int maxIndex)
+        {
+            if (minIndex >= maxIndex)
+            {
+                return array;
+            }
+
+            int index = Partition(array, minIndex, maxIndex);
+
+            QuickSort(array, minIndex, index - 1);
+            QuickSort(array, index + 1, maxIndex);
+
+            return array;
+        }
+
+        private int[] QuickSort(int[] array)
+        {
+            return QuickSort(array, 0, array.Length - 1);
+        }
+
+        private void FilterMedian()
+        {
+            Bitmap imgNoise = MakeImgWithBordersCopy();
+            Bitmap img = new Bitmap(pictureBoxNoise.Image);
+
+            int n = apert * 2 + 1;
+
+            for (int i = 0; i < img.Width; i++)
+            {
+                for (int j = 0; j < img.Height; j++)
+                {
+                    int[] rmas = new int[n * n];
+                    int[] gmas = new int[n * n];
+                    int[] bmas = new int[n * n];
+
+                    for (int k = 0; k < n; k++)
+                    {
+                        for (int l = 0; l < n; l++)
+                        {
+                            Color pixel = imgNoise.GetPixel(i + l, j + k);
+
+                            rmas[k * n + l] = pixel.R;
+                            gmas[k * n + l] = pixel.G;
+                            bmas[k * n + l] = pixel.B;
+                        }
+                    }
+
+                    img.SetPixel(i, j, Color.FromArgb(img.GetPixel(i, j).A, QuickSort(rmas)[apert], QuickSort(gmas)[apert], QuickSort(bmas)[apert]));
+                }
+            }
+
+
+            pictureBoxMedian.Image = img;
         }
     }
 }

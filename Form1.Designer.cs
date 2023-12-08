@@ -36,6 +36,10 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBoxStart = new System.Windows.Forms.PictureBox();
             this.tabPageNoNoise = new System.Windows.Forms.TabPage();
+            this.pictureBoxMedian = new System.Windows.Forms.PictureBox();
+            this.pictureBoxGauss = new System.Windows.Forms.PictureBox();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.pictureBoxNoiseMini = new System.Windows.Forms.PictureBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -44,10 +48,6 @@
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.openFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.pictureBoxMedian = new System.Windows.Forms.PictureBox();
-            this.pictureBoxGauss = new System.Windows.Forms.PictureBox();
             this.tabControl.SuspendLayout();
             this.tabPageNoise.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -55,14 +55,13 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStart)).BeginInit();
             this.tabPageNoNoise.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMedian)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGauss)).BeginInit();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNoiseMini)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStartMini)).BeginInit();
             this.menuStrip.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMedian)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGauss)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -74,9 +73,9 @@
             this.tabControl.Multiline = true;
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1143, 555);
+            this.tabControl.Size = new System.Drawing.Size(1543, 555);
             this.tabControl.TabIndex = 0;
-            this.tabControl.Selected += new System.Windows.Forms.TabControlEventHandler(this.TabControl1_Selected);
+            this.tabControl.Selected += new System.Windows.Forms.TabControlEventHandler(this.TabControl_Selected);
             // 
             // tabPageNoise
             // 
@@ -86,7 +85,7 @@
             this.tabPageNoise.Location = new System.Drawing.Point(4, 4);
             this.tabPageNoise.Name = "tabPageNoise";
             this.tabPageNoise.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageNoise.Size = new System.Drawing.Size(1116, 547);
+            this.tabPageNoise.Size = new System.Drawing.Size(1516, 547);
             this.tabPageNoise.TabIndex = 0;
             this.tabPageNoise.Text = "Шум";
             // 
@@ -132,6 +131,7 @@
             // tabPageNoNoise
             // 
             this.tabPageNoNoise.BackColor = System.Drawing.Color.Linen;
+            this.tabPageNoNoise.Controls.Add(this.pictureBoxMedian);
             this.tabPageNoNoise.Controls.Add(this.pictureBoxGauss);
             this.tabPageNoNoise.Controls.Add(this.groupBox7);
             this.tabPageNoNoise.Controls.Add(this.groupBox6);
@@ -141,9 +141,47 @@
             this.tabPageNoNoise.Location = new System.Drawing.Point(4, 4);
             this.tabPageNoNoise.Name = "tabPageNoNoise";
             this.tabPageNoNoise.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageNoNoise.Size = new System.Drawing.Size(1116, 547);
+            this.tabPageNoNoise.Size = new System.Drawing.Size(1516, 547);
             this.tabPageNoNoise.TabIndex = 1;
             this.tabPageNoNoise.Text = "Шумоподавление";
+            // 
+            // pictureBoxMedian
+            // 
+            this.pictureBoxMedian.Location = new System.Drawing.Point(293, 25);
+            this.pictureBoxMedian.Name = "pictureBoxMedian";
+            this.pictureBoxMedian.Size = new System.Drawing.Size(536, 510);
+            this.pictureBoxMedian.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxMedian.TabIndex = 2;
+            this.pictureBoxMedian.TabStop = false;
+            // 
+            // pictureBoxGauss
+            // 
+            this.pictureBoxGauss.Location = new System.Drawing.Point(841, 25);
+            this.pictureBoxGauss.Name = "pictureBoxGauss";
+            this.pictureBoxGauss.Size = new System.Drawing.Size(536, 510);
+            this.pictureBoxGauss.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxGauss.TabIndex = 3;
+            this.pictureBoxGauss.TabStop = false;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Location = new System.Drawing.Point(705, 6);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(405, 54);
+            this.groupBox7.TabIndex = 2;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Фильтр Гаусса";
+            this.groupBox7.Visible = false;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Location = new System.Drawing.Point(293, 6);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(405, 64);
+            this.groupBox6.TabIndex = 1;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Медианный фильтр";
+            this.groupBox6.Visible = false;
             // 
             // groupBox5
             // 
@@ -190,7 +228,7 @@
             this.groupBox3.Size = new System.Drawing.Size(281, 100);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Аппертура";
+            this.groupBox3.Text = "Апертура";
             // 
             // menuStrip
             // 
@@ -198,7 +236,7 @@
             this.openFileToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(1143, 24);
+            this.menuStrip.Size = new System.Drawing.Size(1543, 24);
             this.menuStrip.TabIndex = 1;
             this.menuStrip.Text = "menuStrip";
             // 
@@ -213,52 +251,12 @@
             // 
             this.openFileDialog.FileName = "openFileDialog";
             // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.pictureBoxMedian);
-            this.groupBox6.Location = new System.Drawing.Point(293, 6);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(405, 532);
-            this.groupBox6.TabIndex = 1;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Медианный фильтр";
-            this.groupBox6.Visible = false;
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.Location = new System.Drawing.Point(705, 6);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(405, 54);
-            this.groupBox7.TabIndex = 2;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Фильтр Гаусса";
-            this.groupBox7.Visible = false;
-            // 
-            // pictureBoxMedian
-            // 
-            this.pictureBoxMedian.Location = new System.Drawing.Point(6, 19);
-            this.pictureBoxMedian.Name = "pictureBoxMedian";
-            this.pictureBoxMedian.Size = new System.Drawing.Size(393, 507);
-            this.pictureBoxMedian.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxMedian.TabIndex = 2;
-            this.pictureBoxMedian.TabStop = false;
-            this.pictureBoxMedian.Visible = false;
-            // 
-            // pictureBoxGauss
-            // 
-            this.pictureBoxGauss.Location = new System.Drawing.Point(299, 25);
-            this.pictureBoxGauss.Name = "pictureBoxGauss";
-            this.pictureBoxGauss.Size = new System.Drawing.Size(805, 507);
-            this.pictureBoxGauss.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxGauss.TabIndex = 3;
-            this.pictureBoxGauss.TabStop = false;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(1143, 581);
+            this.ClientSize = new System.Drawing.Size(1543, 581);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.menuStrip);
             this.MainMenuStrip = this.menuStrip;
@@ -271,15 +269,14 @@
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStart)).EndInit();
             this.tabPageNoNoise.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMedian)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGauss)).EndInit();
             this.groupBox5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNoiseMini)).EndInit();
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStartMini)).EndInit();
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMedian)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGauss)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
