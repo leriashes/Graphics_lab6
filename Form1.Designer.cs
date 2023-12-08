@@ -53,6 +53,10 @@
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.tabPageSharpen = new System.Windows.Forms.TabPage();
             this.tabPageEdges = new System.Windows.Forms.TabPage();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.pictureBoxSharpen = new System.Windows.Forms.PictureBox();
             this.tabControl.SuspendLayout();
             this.tabPageNoise.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -71,6 +75,11 @@
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.menuStrip.SuspendLayout();
+            this.tabPageSharpen.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.groupBox9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSharpen)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -294,21 +303,61 @@
             // 
             // tabPageSharpen
             // 
+            this.tabPageSharpen.BackColor = System.Drawing.Color.Linen;
+            this.tabPageSharpen.Controls.Add(this.groupBox9);
+            this.tabPageSharpen.Controls.Add(this.groupBox8);
             this.tabPageSharpen.Location = new System.Drawing.Point(4, 4);
             this.tabPageSharpen.Name = "tabPageSharpen";
             this.tabPageSharpen.Size = new System.Drawing.Size(1388, 547);
             this.tabPageSharpen.TabIndex = 2;
             this.tabPageSharpen.Text = "Повышение резкости";
-            this.tabPageSharpen.UseVisualStyleBackColor = true;
             // 
             // tabPageEdges
             // 
+            this.tabPageEdges.BackColor = System.Drawing.Color.Linen;
             this.tabPageEdges.Location = new System.Drawing.Point(4, 4);
             this.tabPageEdges.Name = "tabPageEdges";
             this.tabPageEdges.Size = new System.Drawing.Size(1388, 547);
             this.tabPageEdges.TabIndex = 3;
             this.tabPageEdges.Text = "Оконтуривание";
-            this.tabPageEdges.UseVisualStyleBackColor = true;
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.pictureBox1);
+            this.groupBox8.Location = new System.Drawing.Point(834, 6);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(548, 535);
+            this.groupBox8.TabIndex = 3;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Повышение резкости";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(6, 19);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(535, 510);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.pictureBoxSharpen);
+            this.groupBox9.Location = new System.Drawing.Point(280, 6);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(548, 535);
+            this.groupBox9.TabIndex = 4;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Увеличение резкозти";
+            // 
+            // pictureBoxSharpen
+            // 
+            this.pictureBoxSharpen.Location = new System.Drawing.Point(6, 19);
+            this.pictureBoxSharpen.Name = "pictureBoxSharpen";
+            this.pictureBoxSharpen.Size = new System.Drawing.Size(536, 510);
+            this.pictureBoxSharpen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxSharpen.TabIndex = 2;
+            this.pictureBoxSharpen.TabStop = false;
             // 
             // MainForm
             // 
@@ -342,6 +391,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
+            this.tabPageSharpen.ResumeLayout(false);
+            this.groupBox8.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.groupBox9.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSharpen)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -373,6 +427,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tabPageSharpen;
         private System.Windows.Forms.TabPage tabPageEdges;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.PictureBox pictureBoxSharpen;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

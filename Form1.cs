@@ -12,7 +12,8 @@ namespace Graphics_lab6
 {
     public partial class MainForm : Form
     {
-        int apert = 2;
+        int apert = 1;
+        double kSharp = 2;
         double sigma = 0.3;
 
         double[] kernelGauss;
@@ -100,12 +101,17 @@ namespace Graphics_lab6
         private void TabControl_Selected(object sender, TabControlEventArgs e)
         {
             LoadMini();
-            CountSigma();
 
             if (tabControl.SelectedIndex == 1)
             {
+                CountSigma();
+
                 FilterGauss();
                 FilterMedian();
+            }
+            else if (tabControl.SelectedIndex == 2)
+            {
+                FilterSharp();
             }
         }
 
@@ -132,9 +138,9 @@ namespace Graphics_lab6
             kernelGauss = kernel;
         }
 
-        private Bitmap MakeImgWithBordersCopy()
+        private Bitmap MakeImgWithBordersCopy(PictureBox picture)
         {
-            Bitmap imgStart = new Bitmap(pictureBoxNoise.Image);
+            Bitmap imgStart = new Bitmap(picture.Image);
 
             Bitmap img = new Bitmap(imgStart.Width + apert * 2, imgStart.Height + apert * 2);
 
@@ -179,7 +185,7 @@ namespace Graphics_lab6
 
         private void FilterGauss()
         {
-            Bitmap imgNoise = MakeImgWithBordersCopy();
+            Bitmap imgNoise = MakeImgWithBordersCopy(pictureBoxNoise);
             Bitmap img = new Bitmap(pictureBoxNoise.Image);
 
             progressBar1.Visible = true;
@@ -218,7 +224,6 @@ namespace Graphics_lab6
 
             pictureBoxGauss.Image = img;
         }
-
 
         private int Partition(int[] array, int minIndex, int maxIndex)
         {
@@ -262,7 +267,7 @@ namespace Graphics_lab6
 
         private void FilterMedian()
         {
-            Bitmap imgNoise = MakeImgWithBordersCopy();
+            Bitmap imgNoise = MakeImgWithBordersCopy(pictureBoxNoise);
             Bitmap img = new Bitmap(pictureBoxNoise.Image);
 
             progressBar1.Visible = true;
@@ -315,6 +320,58 @@ namespace Graphics_lab6
         private void TrackBar1_ValueChanged(object sender, EventArgs e)
         {
             label1.Text = trackBar1.Value.ToString();
+        }
+
+        private void FilterSharp()
+        {
+            Bitmap imgNoise = MakeImgWithBordersCopy(pictureBoxStart);
+            Bitmap img = new Bitmap(pictureBoxStart.Image);
+
+            progressBar1.Visible = true;
+            progressBar1.Maximum = img.Width * img.Height;
+            progressBar1.Value = 0;
+
+            int n = apert * 2 + 1;
+            int t = n * n - 1;
+
+            for (int i = 0; i < img.Width; i++)
+            {
+                for (int j = 0; j < img.Height; j++)
+                {
+                    double R = 0;
+                    double G = 0;
+                    double B = 0;
+
+                    for (int k = 0; k < n; k++)
+                    {
+                        for (int l = 0; l < n; l++)
+                        {
+                            Color pixel = imgNoise.GetPixel(i + l, j + k);
+
+                            if (k == apert && l == apert)
+                            {
+                                R += pixel.R * (kSharp + 1);
+                                G += pixel.G * (kSharp + 1);
+                                B += pixel.B * (kSharp + 1);
+                            }
+                            else
+                            {
+                                R += pixel.R * (-kSharp / t);
+                                G += pixel.G * (-kSharp / t);
+                                B += pixel.B * (-kSharp / t);
+                            }
+                        }
+                    }
+
+                    img.SetPixel(i, j, Color.FromArgb(img.GetPixel(i, j).A, NormalizeColor(Convert.ToInt32(Math.Round(R))), NormalizeColor(Convert.ToInt32(Math.Round(G))), NormalizeColor(Convert.ToInt32(Math.Round(B)))));
+
+                    progressBar1.Value += 1;
+                }
+            }
+
+            progressBar1.Visible = false;
+
+            pictureBoxSharpen.Image = img;
         }
     }
 }
