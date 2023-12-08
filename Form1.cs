@@ -25,7 +25,7 @@ namespace Graphics_lab6
 
             Random rand = new Random();
 
-            double prob = 0.2;
+            double prob = 0.4;
             int val = 50;
             int count = 0;
 
