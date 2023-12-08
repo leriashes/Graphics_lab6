@@ -15,13 +15,28 @@ namespace Graphics_lab6
         public MainForm()
         {
             InitializeComponent();
-
             MakeNoise();
+        }
+
+        private void LoadImage(string fileName)
+        {
+            pictureBoxStart.Image = new Bitmap(fileName);
+            MakeNoise();
+            LoadMini();
+        }
+
+        private void LoadMini() 
+        {
+            if (tabControl.SelectedIndex == 1)
+            {
+                pictureBoxStartMini.Image = pictureBoxStart.Image;
+                pictureBoxNoiseMini.Image = pictureBoxNoise.Image;
+            }
         }
 
         private void MakeNoise()
         {
-            Bitmap img = new Bitmap(pictureBox1.Image);
+            Bitmap img = new Bitmap(pictureBoxStart.Image);
 
             Random rand = new Random();
 
@@ -52,7 +67,7 @@ namespace Graphics_lab6
                 }
             }
 
-            pictureBox2.Image = img;        
+            pictureBoxNoise.Image = img;        
         }
 
         private int NormalizeColor(int color)
@@ -73,24 +88,13 @@ namespace Graphics_lab6
         {
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                pictureBox1.Image = new Bitmap(openFileDialog.FileName);
-                MakeNoise();
-
-                if (tabControl1.SelectedIndex == 1)
-                {
-                    pictureBox3.Image = pictureBox1.Image;
-                    pictureBox4.Image = pictureBox2.Image;
-                }
+                LoadImage(openFileDialog.FileName);
             }
         }
 
         private void TabControl1_Selected(object sender, TabControlEventArgs e)
         {
-            if (tabControl1.SelectedIndex == 1)
-            {
-                pictureBox3.Image = pictureBox1.Image;
-                pictureBox4.Image = pictureBox2.Image;
-            }
+            LoadMini();
         }
     }
 }
