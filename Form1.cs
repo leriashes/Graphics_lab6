@@ -26,7 +26,7 @@ namespace Graphics_lab6
             Random rand = new Random();
 
             double prob = 0.4;
-            int val = 50;
+            int val = 70;
             int count = 0;
 
 
@@ -69,12 +69,27 @@ namespace Graphics_lab6
             return color;
         }
 
-        private void openFileToolStripMenuItem_Click(object sender, EventArgs e)
+        private void OpenFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 pictureBox1.Image = new Bitmap(openFileDialog.FileName);
                 MakeNoise();
+
+                if (tabControl1.SelectedIndex == 1)
+                {
+                    pictureBox3.Image = pictureBox1.Image;
+                    pictureBox4.Image = pictureBox2.Image;
+                }
+            }
+        }
+
+        private void TabControl1_Selected(object sender, TabControlEventArgs e)
+        {
+            if (tabControl1.SelectedIndex == 1)
+            {
+                pictureBox3.Image = pictureBox1.Image;
+                pictureBox4.Image = pictureBox2.Image;
             }
         }
     }
