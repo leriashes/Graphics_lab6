@@ -12,7 +12,7 @@ namespace Graphics_lab6
 {
     public partial class MainForm : Form
     {
-        int apert = 1;
+        int apert = 2;
         double sigma = 0.3;
 
         double[] kernelGauss;
@@ -61,9 +61,9 @@ namespace Graphics_lab6
                         int R, G, B;
                         int value = rand.Next(-val, val + 1);
 
-                        R = pixel.R + rand.Next(-val, val + 1);
-                        G = pixel.G + rand.Next(-val, val + 1);
-                        B = pixel.B + rand.Next(-val, val + 1);
+                        R = pixel.R + value;
+                        G = pixel.G + value;
+                        B = pixel.B + value;
 
                         img.SetPixel(x, y, Color.FromArgb(pixel.A, NormalizeColor(R), NormalizeColor(G), NormalizeColor(B)));
 
@@ -182,6 +182,10 @@ namespace Graphics_lab6
             Bitmap imgNoise = MakeImgWithBordersCopy();
             Bitmap img = new Bitmap(pictureBoxNoise.Image);
 
+            progressBar1.Visible = true;
+            progressBar1.Maximum = img.Width * img.Height;
+            progressBar1.Value = 0;
+
             int n = apert * 2 + 1;
 
             for (int i = 0; i < img.Width; i++)
@@ -205,8 +209,12 @@ namespace Graphics_lab6
                     }
 
                     img.SetPixel(i, j, Color.FromArgb(img.GetPixel(i, j).A, NormalizeColor(Convert.ToInt32(Math.Round(R))), NormalizeColor(Convert.ToInt32(Math.Round(G))), NormalizeColor(Convert.ToInt32(Math.Round(B)))));
+
+                    progressBar1.Value += 1;
                 }
             }
+
+            progressBar1.Visible = false;
 
             pictureBoxGauss.Image = img;
         }
@@ -257,6 +265,10 @@ namespace Graphics_lab6
             Bitmap imgNoise = MakeImgWithBordersCopy();
             Bitmap img = new Bitmap(pictureBoxNoise.Image);
 
+            progressBar1.Visible = true;
+            progressBar1.Maximum = img.Width * img.Height;
+            progressBar1.Value = 0;
+
             int n = apert * 2 + 1;
 
             for (int i = 0; i < img.Width; i++)
@@ -280,11 +292,29 @@ namespace Graphics_lab6
                     }
 
                     img.SetPixel(i, j, Color.FromArgb(img.GetPixel(i, j).A, QuickSort(rmas)[apert], QuickSort(gmas)[apert], QuickSort(bmas)[apert]));
+
+                    progressBar1.Value += 1;
                 }
             }
 
+            progressBar1.Visible = false;
 
             pictureBoxMedian.Image = img;
+        }
+
+        private void TrackBar1_MouseUp(object sender, MouseEventArgs e)
+        {
+            apert = trackBar1.Value;
+
+            CountSigma();
+
+            FilterGauss();
+            FilterMedian();
+        }
+
+        private void TrackBar1_ValueChanged(object sender, EventArgs e)
+        {
+            label1.Text = trackBar1.Value.ToString();
         }
     }
 }
