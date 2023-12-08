@@ -51,6 +51,8 @@
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.openFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.tabPageSharpen = new System.Windows.Forms.TabPage();
+            this.tabPageEdges = new System.Windows.Forms.TabPage();
             this.tabControl.SuspendLayout();
             this.tabPageNoise.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -76,6 +78,8 @@
             this.tabControl.Alignment = System.Windows.Forms.TabAlignment.Right;
             this.tabControl.Controls.Add(this.tabPageNoise);
             this.tabControl.Controls.Add(this.tabPageNoNoise);
+            this.tabControl.Controls.Add(this.tabPageSharpen);
+            this.tabControl.Controls.Add(this.tabPageEdges);
             this.tabControl.Location = new System.Drawing.Point(0, 27);
             this.tabControl.Multiline = true;
             this.tabControl.Name = "tabControl";
@@ -288,6 +292,24 @@
             // 
             this.openFileDialog.FileName = "openFileDialog";
             // 
+            // tabPageSharpen
+            // 
+            this.tabPageSharpen.Location = new System.Drawing.Point(4, 4);
+            this.tabPageSharpen.Name = "tabPageSharpen";
+            this.tabPageSharpen.Size = new System.Drawing.Size(1388, 547);
+            this.tabPageSharpen.TabIndex = 2;
+            this.tabPageSharpen.Text = "Повышение резкости";
+            this.tabPageSharpen.UseVisualStyleBackColor = true;
+            // 
+            // tabPageEdges
+            // 
+            this.tabPageEdges.Location = new System.Drawing.Point(4, 4);
+            this.tabPageEdges.Name = "tabPageEdges";
+            this.tabPageEdges.Size = new System.Drawing.Size(1388, 547);
+            this.tabPageEdges.TabIndex = 3;
+            this.tabPageEdges.Text = "Оконтуривание";
+            this.tabPageEdges.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -349,6 +371,8 @@
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TabPage tabPageSharpen;
+        private System.Windows.Forms.TabPage tabPageEdges;
     }
 }
 
