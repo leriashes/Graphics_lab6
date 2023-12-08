@@ -22,10 +22,13 @@ namespace Graphics_lab6
         private void MakeNoise()
         {
             Bitmap img = new Bitmap(pictureBox1.Image);
-            double prob = 0.2;
-            int val = 50;
 
             Random rand = new Random();
+
+            double prob = 0.2;
+            int val = 50;
+            int count = 0;
+
 
             for (int x = 0; x < img.Width; x++) 
             {
@@ -36,12 +39,15 @@ namespace Graphics_lab6
                         Color pixel = img.GetPixel(x, y);
 
                         int R, G, B;
+                        int value = rand.Next(-val, val + 1);
 
-                        R = pixel.R + rand.Next(-val, val + 1);
-                        G = pixel.G + rand.Next(-val, val + 1);
-                        B = pixel.B + rand.Next(-val, val + 1);
+                        R = pixel.R + value;
+                        G = pixel.G + value;
+                        B = pixel.B + value;
 
                         img.SetPixel(x, y, Color.FromArgb(pixel.A, NormalizeColor(R), NormalizeColor(G), NormalizeColor(B)));
+
+                        count += 1;
                     }
                 }
             }
@@ -61,6 +67,15 @@ namespace Graphics_lab6
             }
 
             return color;
+        }
+
+        private void openFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                pictureBox1.Image = new Bitmap(openFileDialog.FileName);
+                MakeNoise();
+            }
         }
     }
 }
