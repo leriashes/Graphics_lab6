@@ -61,7 +61,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStartMini)).BeginInit();
             this.menuStrip.SuspendLayout();
             this.groupBox6.SuspendLayout();
-            this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMedian)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGauss)).BeginInit();
             this.SuspendLayout();
@@ -133,6 +132,7 @@
             // tabPageNoNoise
             // 
             this.tabPageNoNoise.BackColor = System.Drawing.Color.Linen;
+            this.tabPageNoNoise.Controls.Add(this.pictureBoxGauss);
             this.tabPageNoNoise.Controls.Add(this.groupBox7);
             this.tabPageNoNoise.Controls.Add(this.groupBox6);
             this.tabPageNoNoise.Controls.Add(this.groupBox5);
@@ -222,16 +222,17 @@
             this.groupBox6.TabIndex = 1;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Медианный фильтр";
+            this.groupBox6.Visible = false;
             // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.pictureBoxGauss);
             this.groupBox7.Location = new System.Drawing.Point(705, 6);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(405, 532);
+            this.groupBox7.Size = new System.Drawing.Size(405, 54);
             this.groupBox7.TabIndex = 2;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Фильтр Гаусса";
+            this.groupBox7.Visible = false;
             // 
             // pictureBoxMedian
             // 
@@ -241,12 +242,13 @@
             this.pictureBoxMedian.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxMedian.TabIndex = 2;
             this.pictureBoxMedian.TabStop = false;
+            this.pictureBoxMedian.Visible = false;
             // 
             // pictureBoxGauss
             // 
-            this.pictureBoxGauss.Location = new System.Drawing.Point(6, 19);
+            this.pictureBoxGauss.Location = new System.Drawing.Point(299, 25);
             this.pictureBoxGauss.Name = "pictureBoxGauss";
-            this.pictureBoxGauss.Size = new System.Drawing.Size(393, 507);
+            this.pictureBoxGauss.Size = new System.Drawing.Size(805, 507);
             this.pictureBoxGauss.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxGauss.TabIndex = 3;
             this.pictureBoxGauss.TabStop = false;
@@ -276,7 +278,6 @@
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.groupBox6.ResumeLayout(false);
-            this.groupBox7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMedian)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGauss)).EndInit();
             this.ResumeLayout(false);

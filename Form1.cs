@@ -12,7 +12,7 @@ namespace Graphics_lab6
 {
     public partial class MainForm : Form
     {
-        int appert = 2;
+        int appert = 8;
         double sigma = 0.3;
 
         double[] kernelGauss;
@@ -46,8 +46,8 @@ namespace Graphics_lab6
 
             Random rand = new Random();
 
-            double prob = 0.4;
-            int val = 70;
+            double prob = 0.2;
+            int val = 40;
             int count = 0;
 
 
@@ -102,6 +102,8 @@ namespace Graphics_lab6
         {
             LoadMini();
             CountSigma();
+
+            FilterGauss();
         }
 
         private void CountSigma()
@@ -123,6 +125,87 @@ namespace Graphics_lab6
                     kernel[(i + appert) * n + j + appert] = Math.Exp(-(i * i + j * j) / (2 * sigma * sigma)) / (2 * sigma * sigma * Math.PI);
                 }
             }
+
+            kernelGauss = kernel;
+        }
+
+        private Bitmap MakeImgWithBordersCopy()
+        {
+            Bitmap imgStart = new Bitmap(pictureBoxNoise.Image);
+
+            Bitmap img = new Bitmap(imgStart.Width + appert * 2, imgStart.Height + appert * 2);
+
+            for (int i = 0; i < img.Width; i++)
+            {
+                for (int j = 0; j < img.Height; j++)
+                {
+                    int x, y;
+
+                    if (i < appert)
+                    {
+                        x = 0;
+                    }
+                    else if (i >= appert + imgStart.Width)
+                    {
+                        x = imgStart.Width - 1;
+                    }
+                    else
+                    {
+                        x = i - appert;
+                    }
+
+                    if (j < appert)
+                    {
+                        y = 0;
+                    }
+                    else if (j >= appert + imgStart.Height)
+                    {
+                        y = imgStart.Height - 1;
+                    }
+                    else
+                    {
+                        y = j - appert;
+                    }
+
+                    img.SetPixel(i, j, imgStart.GetPixel(x, y));
+                }
+            }
+
+            return img;
+        }
+
+        private void FilterGauss()
+        {
+            Bitmap imgNoise = MakeImgWithBordersCopy();
+            Bitmap img = new Bitmap(pictureBoxNoise.Image);
+
+            int n = appert * 2 + 1;
+
+            for (int i = 0; i < img.Width; i++)
+            {
+                for (int j = 0; j < img.Height; j++)
+                {
+                    double R = 0;
+                    double G = 0;
+                    double B = 0;
+
+                    for (int k = 0; k < n; k++)
+                    {
+                        for(int l = 0; l < n; l++) 
+                        {
+                            Color pixel = imgNoise.GetPixel(i + l, j + k);
+
+                            R += pixel.R * kernelGauss[k * n + l];
+                            G += pixel.G * kernelGauss[k * n + l];
+                            B += pixel.B * kernelGauss[k * n + l];
+                        }
+                    }
+
+                    img.SetPixel(i, j, Color.FromArgb(img.GetPixel(i, j).A, NormalizeColor(Convert.ToInt32(Math.Round(R))), NormalizeColor(Convert.ToInt32(Math.Round(G))), NormalizeColor(Convert.ToInt32(Math.Round(B)))));
+                }
+            }
+
+            pictureBoxGauss.Image = img;
         }
     }
 }
