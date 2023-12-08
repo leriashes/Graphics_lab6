@@ -16,6 +16,7 @@ namespace Graphics_lab6
         int apertSharp = 1;
         double kSharp = 2;
         double sigma = 0.3;
+        int alpha = 200;
 
         double[] kernelGauss;
 
@@ -30,6 +31,7 @@ namespace Graphics_lab6
         {
             pictureBoxStart.Image = new Bitmap(fileName);
             pictureBoxStartSharp.Image = new Bitmap(fileName);
+            pictureBoxStartEdges.Image = new Bitmap(fileName);
             MakeNoise();
             LoadMini();
         }
@@ -115,6 +117,10 @@ namespace Graphics_lab6
             else if (tabControl.SelectedIndex == 2)
             {
                 FilterSharp();
+            }
+            else if (tabControl.SelectedIndex == 3)
+            {
+                FilterEdges();
             }
         }
 
@@ -312,7 +318,7 @@ namespace Graphics_lab6
 
         private void FilterSharp()
         {
-            Bitmap imgNoise = MakeImgWithBordersCopy(pictureBoxStart, apertSharp);
+            Bitmap imgStart = MakeImgWithBordersCopy(pictureBoxStart, apertSharp);
             Bitmap img = new Bitmap(pictureBoxStart.Image);
 
             progressBar1.Visible = true;
@@ -334,7 +340,7 @@ namespace Graphics_lab6
                     {
                         for (int l = 0; l < n; l++)
                         {
-                            Color pixel = imgNoise.GetPixel(i + l, j + k);
+                            Color pixel = imgStart.GetPixel(i + l, j + k);
 
                             if (k == apertSharp && l == apertSharp)
                             {
@@ -360,6 +366,77 @@ namespace Graphics_lab6
             progressBar1.Visible = false;
 
             pictureBoxSharp.Image = img;
+        }
+
+        private Bitmap MakeGrey(Bitmap colored)
+        {
+            Bitmap img = new Bitmap(colored);
+
+            for (int i = 0; i < img.Width; i++)
+            {
+                for (int j = 0; j < img.Height; j++)
+                {
+                    Color pixel = colored.GetPixel(i, j);
+
+                    int brightness = NormalizeColor(Convert.ToInt32(Math.Round(0.299 * pixel.R + 0.587 * pixel.G + 0.114 * pixel.B)));
+
+                    img.SetPixel(i, j, Color.FromArgb(pixel.A, brightness, brightness, brightness));
+                }
+            }
+
+            return img;
+        }
+
+        private void FilterEdges()
+        {
+            Bitmap imgStart = MakeGrey(MakeImgWithBordersCopy(pictureBoxStart, 1));
+            Bitmap imgHorizontal = new Bitmap(pictureBoxStart.Image);
+            Bitmap imgVertical = new Bitmap(pictureBoxStart.Image);
+            Bitmap img = new Bitmap(pictureBoxStart.Image);
+
+            progressBar1.Visible = true;
+            progressBar1.Maximum = img.Width * img.Height;
+            progressBar1.Value = 0;
+
+            int n = 3;
+
+            int[] matrixSobel = new int[9] { -1, -2, -1, 0, 0, 0, 1, 2, 1};
+
+            for (int i = 0; i < img.Width; i++)
+            {
+                for (int j = 0; j < img.Height; j++)
+                {
+                    int Y = 0;
+
+                    for (int k = 0; k < n; k++)
+                    {
+                        for (int l = 0; l < n; l++)
+                        {
+                            Color pixel = imgStart.GetPixel(i + l, j + k);
+
+                            Y += pixel.R * (matrixSobel[k * n + l] + matrixSobel[l * n + k]);
+                        }
+                    }
+
+                    Y = NormalizeColor(Y);
+
+                    if (Y > alpha)
+                    {
+                        Y = 255;
+                    }
+                    else
+                    {
+                        Y = 0;
+                    }
+                    img.SetPixel(i, j, Color.FromArgb(img.GetPixel(i, j).A, Y, Y, Y));
+
+                    progressBar1.Value += 1;
+                }
+            }
+
+            progressBar1.Visible = false;
+
+            pictureBoxEdges.Image = img;
         }
 
         private void TrackBar1_MouseUp(object sender, MouseEventArgs e)

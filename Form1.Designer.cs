@@ -63,6 +63,10 @@
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.openFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.groupBoxStartEdges = new System.Windows.Forms.GroupBox();
+            this.pictureBoxStartEdges = new System.Windows.Forms.PictureBox();
+            this.groupBoxEdges = new System.Windows.Forms.GroupBox();
+            this.pictureBoxEdges = new System.Windows.Forms.PictureBox();
             this.tabControl.SuspendLayout();
             this.tabPageNoise.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -89,7 +93,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStartSharp)).BeginInit();
             this.groupBox8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSharp)).BeginInit();
+            this.tabPageEdges.SuspendLayout();
             this.menuStrip.SuspendLayout();
+            this.groupBoxStartEdges.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStartEdges)).BeginInit();
+            this.groupBoxEdges.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEdges)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -397,6 +406,8 @@
             // tabPageEdges
             // 
             this.tabPageEdges.BackColor = System.Drawing.Color.Linen;
+            this.tabPageEdges.Controls.Add(this.groupBoxEdges);
+            this.tabPageEdges.Controls.Add(this.groupBoxStartEdges);
             this.tabPageEdges.Location = new System.Drawing.Point(4, 4);
             this.tabPageEdges.Name = "tabPageEdges";
             this.tabPageEdges.Size = new System.Drawing.Size(1388, 547);
@@ -433,6 +444,44 @@
             // openFileDialog
             // 
             this.openFileDialog.FileName = "openFileDialog";
+            // 
+            // groupBoxStartEdges
+            // 
+            this.groupBoxStartEdges.Controls.Add(this.pictureBoxStartEdges);
+            this.groupBoxStartEdges.Location = new System.Drawing.Point(283, 3);
+            this.groupBoxStartEdges.Name = "groupBoxStartEdges";
+            this.groupBoxStartEdges.Size = new System.Drawing.Size(548, 535);
+            this.groupBoxStartEdges.TabIndex = 5;
+            this.groupBoxStartEdges.TabStop = false;
+            this.groupBoxStartEdges.Text = "Исходное изображение";
+            // 
+            // pictureBoxStartEdges
+            // 
+            this.pictureBoxStartEdges.Location = new System.Drawing.Point(6, 19);
+            this.pictureBoxStartEdges.Name = "pictureBoxStartEdges";
+            this.pictureBoxStartEdges.Size = new System.Drawing.Size(536, 510);
+            this.pictureBoxStartEdges.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxStartEdges.TabIndex = 2;
+            this.pictureBoxStartEdges.TabStop = false;
+            // 
+            // groupBoxEdges
+            // 
+            this.groupBoxEdges.Controls.Add(this.pictureBoxEdges);
+            this.groupBoxEdges.Location = new System.Drawing.Point(837, 3);
+            this.groupBoxEdges.Name = "groupBoxEdges";
+            this.groupBoxEdges.Size = new System.Drawing.Size(548, 535);
+            this.groupBoxEdges.TabIndex = 6;
+            this.groupBoxEdges.TabStop = false;
+            this.groupBoxEdges.Text = "Оконтуривание";
+            // 
+            // pictureBoxEdges
+            // 
+            this.pictureBoxEdges.Location = new System.Drawing.Point(6, 19);
+            this.pictureBoxEdges.Name = "pictureBoxEdges";
+            this.pictureBoxEdges.Size = new System.Drawing.Size(535, 510);
+            this.pictureBoxEdges.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxEdges.TabIndex = 3;
+            this.pictureBoxEdges.TabStop = false;
             // 
             // MainForm
             // 
@@ -475,8 +524,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStartSharp)).EndInit();
             this.groupBox8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSharp)).EndInit();
+            this.tabPageEdges.ResumeLayout(false);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
+            this.groupBoxStartEdges.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStartEdges)).EndInit();
+            this.groupBoxEdges.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEdges)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -518,6 +572,10 @@
         private System.Windows.Forms.GroupBox groupBox11;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TrackBar trackBar3;
+        private System.Windows.Forms.GroupBox groupBoxEdges;
+        private System.Windows.Forms.PictureBox pictureBoxEdges;
+        private System.Windows.Forms.GroupBox groupBoxStartEdges;
+        private System.Windows.Forms.PictureBox pictureBoxStartEdges;
     }
 }
 
