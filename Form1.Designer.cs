@@ -36,11 +36,10 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBoxStart = new System.Windows.Forms.PictureBox();
             this.tabPageNoNoise = new System.Windows.Forms.TabPage();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.pictureBoxMedian = new System.Windows.Forms.PictureBox();
-            this.pictureBoxGauss = new System.Windows.Forms.PictureBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.pictureBoxGauss = new System.Windows.Forms.PictureBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.pictureBoxMedian = new System.Windows.Forms.PictureBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.pictureBoxNoiseMini = new System.Windows.Forms.PictureBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -48,15 +47,22 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.tabPageSharpen = new System.Windows.Forms.TabPage();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.trackBar3 = new System.Windows.Forms.TrackBar();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.trackBar2 = new System.Windows.Forms.TrackBar();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.pictureBoxStartSharp = new System.Windows.Forms.PictureBox();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.pictureBoxSharp = new System.Windows.Forms.PictureBox();
+            this.tabPageEdges = new System.Windows.Forms.TabPage();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.openFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.tabPageSharpen = new System.Windows.Forms.TabPage();
-            this.tabPageEdges = new System.Windows.Forms.TabPage();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.pictureBoxSharpen = new System.Windows.Forms.PictureBox();
             this.tabControl.SuspendLayout();
             this.tabPageNoise.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -64,22 +70,26 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStart)).BeginInit();
             this.tabPageNoNoise.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMedian)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGauss)).BeginInit();
             this.groupBox7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGauss)).BeginInit();
             this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMedian)).BeginInit();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNoiseMini)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStartMini)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
-            this.menuStrip.SuspendLayout();
             this.tabPageSharpen.SuspendLayout();
-            this.groupBox8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.groupBox11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).BeginInit();
+            this.groupBox10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
             this.groupBox9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSharpen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStartSharp)).BeginInit();
+            this.groupBox8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSharp)).BeginInit();
+            this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -163,34 +173,6 @@
             this.tabPageNoNoise.TabIndex = 1;
             this.tabPageNoNoise.Text = "Шумоподавление";
             // 
-            // progressBar1
-            // 
-            this.progressBar1.ForeColor = System.Drawing.Color.PaleTurquoise;
-            this.progressBar1.Location = new System.Drawing.Point(1093, 1);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(299, 20);
-            this.progressBar1.Step = 1;
-            this.progressBar1.TabIndex = 4;
-            this.progressBar1.Visible = false;
-            // 
-            // pictureBoxMedian
-            // 
-            this.pictureBoxMedian.Location = new System.Drawing.Point(6, 19);
-            this.pictureBoxMedian.Name = "pictureBoxMedian";
-            this.pictureBoxMedian.Size = new System.Drawing.Size(536, 510);
-            this.pictureBoxMedian.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxMedian.TabIndex = 2;
-            this.pictureBoxMedian.TabStop = false;
-            // 
-            // pictureBoxGauss
-            // 
-            this.pictureBoxGauss.Location = new System.Drawing.Point(6, 19);
-            this.pictureBoxGauss.Name = "pictureBoxGauss";
-            this.pictureBoxGauss.Size = new System.Drawing.Size(535, 510);
-            this.pictureBoxGauss.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxGauss.TabIndex = 3;
-            this.pictureBoxGauss.TabStop = false;
-            // 
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.pictureBoxGauss);
@@ -201,6 +183,15 @@
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Фильтр Гаусса";
             // 
+            // pictureBoxGauss
+            // 
+            this.pictureBoxGauss.Location = new System.Drawing.Point(6, 19);
+            this.pictureBoxGauss.Name = "pictureBoxGauss";
+            this.pictureBoxGauss.Size = new System.Drawing.Size(535, 510);
+            this.pictureBoxGauss.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxGauss.TabIndex = 3;
+            this.pictureBoxGauss.TabStop = false;
+            // 
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.pictureBoxMedian);
@@ -210,6 +201,15 @@
             this.groupBox6.TabIndex = 1;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Медианный фильтр";
+            // 
+            // pictureBoxMedian
+            // 
+            this.pictureBoxMedian.Location = new System.Drawing.Point(6, 19);
+            this.pictureBoxMedian.Name = "pictureBoxMedian";
+            this.pictureBoxMedian.Size = new System.Drawing.Size(536, 510);
+            this.pictureBoxMedian.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxMedian.TabIndex = 2;
+            this.pictureBoxMedian.TabStop = false;
             // 
             // groupBox5
             // 
@@ -280,6 +280,139 @@
             this.trackBar1.ValueChanged += new System.EventHandler(this.TrackBar1_ValueChanged);
             this.trackBar1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TrackBar1_MouseUp);
             // 
+            // tabPageSharpen
+            // 
+            this.tabPageSharpen.BackColor = System.Drawing.Color.Linen;
+            this.tabPageSharpen.Controls.Add(this.groupBox11);
+            this.tabPageSharpen.Controls.Add(this.groupBox10);
+            this.tabPageSharpen.Controls.Add(this.groupBox9);
+            this.tabPageSharpen.Controls.Add(this.groupBox8);
+            this.tabPageSharpen.Location = new System.Drawing.Point(4, 4);
+            this.tabPageSharpen.Name = "tabPageSharpen";
+            this.tabPageSharpen.Size = new System.Drawing.Size(1388, 547);
+            this.tabPageSharpen.TabIndex = 2;
+            this.tabPageSharpen.Text = "Повышение резкости";
+            // 
+            // groupBox11
+            // 
+            this.groupBox11.Controls.Add(this.label3);
+            this.groupBox11.Controls.Add(this.trackBar3);
+            this.groupBox11.Location = new System.Drawing.Point(6, 76);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Size = new System.Drawing.Size(268, 67);
+            this.groupBox11.TabIndex = 6;
+            this.groupBox11.TabStop = false;
+            this.groupBox11.Text = "Коэффициент";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(243, 23);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(13, 13);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "1";
+            // 
+            // trackBar3
+            // 
+            this.trackBar3.Location = new System.Drawing.Point(6, 19);
+            this.trackBar3.Maximum = 100;
+            this.trackBar3.Minimum = 1;
+            this.trackBar3.Name = "trackBar3";
+            this.trackBar3.Size = new System.Drawing.Size(242, 45);
+            this.trackBar3.TabIndex = 0;
+            this.trackBar3.Value = 10;
+            this.trackBar3.ValueChanged += new System.EventHandler(this.TrackBar3_ValueChanged);
+            this.trackBar3.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TrackBar3_MouseUp);
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.label2);
+            this.groupBox10.Controls.Add(this.trackBar2);
+            this.groupBox10.Location = new System.Drawing.Point(6, 6);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(268, 67);
+            this.groupBox10.TabIndex = 5;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "Апертура";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(248, 23);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(13, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "1";
+            // 
+            // trackBar2
+            // 
+            this.trackBar2.Location = new System.Drawing.Point(6, 19);
+            this.trackBar2.Minimum = 1;
+            this.trackBar2.Name = "trackBar2";
+            this.trackBar2.Size = new System.Drawing.Size(242, 45);
+            this.trackBar2.TabIndex = 0;
+            this.trackBar2.Value = 1;
+            this.trackBar2.ValueChanged += new System.EventHandler(this.TrackBar2_ValueChanged);
+            this.trackBar2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TrackBar2_MouseUp);
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.pictureBoxStartSharp);
+            this.groupBox9.Location = new System.Drawing.Point(280, 6);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(548, 535);
+            this.groupBox9.TabIndex = 4;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Исходное изображение";
+            // 
+            // pictureBoxStartSharp
+            // 
+            this.pictureBoxStartSharp.Location = new System.Drawing.Point(6, 19);
+            this.pictureBoxStartSharp.Name = "pictureBoxStartSharp";
+            this.pictureBoxStartSharp.Size = new System.Drawing.Size(536, 510);
+            this.pictureBoxStartSharp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxStartSharp.TabIndex = 2;
+            this.pictureBoxStartSharp.TabStop = false;
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.pictureBoxSharp);
+            this.groupBox8.Location = new System.Drawing.Point(834, 6);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(548, 535);
+            this.groupBox8.TabIndex = 3;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Повышение резкости";
+            // 
+            // pictureBoxSharp
+            // 
+            this.pictureBoxSharp.Location = new System.Drawing.Point(6, 19);
+            this.pictureBoxSharp.Name = "pictureBoxSharp";
+            this.pictureBoxSharp.Size = new System.Drawing.Size(535, 510);
+            this.pictureBoxSharp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxSharp.TabIndex = 3;
+            this.pictureBoxSharp.TabStop = false;
+            // 
+            // tabPageEdges
+            // 
+            this.tabPageEdges.BackColor = System.Drawing.Color.Linen;
+            this.tabPageEdges.Location = new System.Drawing.Point(4, 4);
+            this.tabPageEdges.Name = "tabPageEdges";
+            this.tabPageEdges.Size = new System.Drawing.Size(1388, 547);
+            this.tabPageEdges.TabIndex = 3;
+            this.tabPageEdges.Text = "Оконтуривание";
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.ForeColor = System.Drawing.Color.PaleTurquoise;
+            this.progressBar1.Location = new System.Drawing.Point(1093, 1);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(299, 20);
+            this.progressBar1.Step = 1;
+            this.progressBar1.TabIndex = 4;
+            this.progressBar1.Visible = false;
+            // 
             // menuStrip
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -301,64 +434,6 @@
             // 
             this.openFileDialog.FileName = "openFileDialog";
             // 
-            // tabPageSharpen
-            // 
-            this.tabPageSharpen.BackColor = System.Drawing.Color.Linen;
-            this.tabPageSharpen.Controls.Add(this.groupBox9);
-            this.tabPageSharpen.Controls.Add(this.groupBox8);
-            this.tabPageSharpen.Location = new System.Drawing.Point(4, 4);
-            this.tabPageSharpen.Name = "tabPageSharpen";
-            this.tabPageSharpen.Size = new System.Drawing.Size(1388, 547);
-            this.tabPageSharpen.TabIndex = 2;
-            this.tabPageSharpen.Text = "Повышение резкости";
-            // 
-            // tabPageEdges
-            // 
-            this.tabPageEdges.BackColor = System.Drawing.Color.Linen;
-            this.tabPageEdges.Location = new System.Drawing.Point(4, 4);
-            this.tabPageEdges.Name = "tabPageEdges";
-            this.tabPageEdges.Size = new System.Drawing.Size(1388, 547);
-            this.tabPageEdges.TabIndex = 3;
-            this.tabPageEdges.Text = "Оконтуривание";
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this.pictureBox1);
-            this.groupBox8.Location = new System.Drawing.Point(834, 6);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(548, 535);
-            this.groupBox8.TabIndex = 3;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Повышение резкости";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(6, 19);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(535, 510);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
-            // 
-            // groupBox9
-            // 
-            this.groupBox9.Controls.Add(this.pictureBoxSharpen);
-            this.groupBox9.Location = new System.Drawing.Point(280, 6);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(548, 535);
-            this.groupBox9.TabIndex = 4;
-            this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "Увеличение резкозти";
-            // 
-            // pictureBoxSharpen
-            // 
-            this.pictureBoxSharpen.Location = new System.Drawing.Point(6, 19);
-            this.pictureBoxSharpen.Name = "pictureBoxSharpen";
-            this.pictureBoxSharpen.Size = new System.Drawing.Size(536, 510);
-            this.pictureBoxSharpen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxSharpen.TabIndex = 2;
-            this.pictureBoxSharpen.TabStop = false;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -378,10 +453,10 @@
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStart)).EndInit();
             this.tabPageNoNoise.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMedian)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGauss)).EndInit();
             this.groupBox7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGauss)).EndInit();
             this.groupBox6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMedian)).EndInit();
             this.groupBox5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNoiseMini)).EndInit();
             this.groupBox4.ResumeLayout(false);
@@ -389,13 +464,19 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            this.tabPageSharpen.ResumeLayout(false);
+            this.groupBox11.ResumeLayout(false);
+            this.groupBox11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).EndInit();
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
+            this.groupBox9.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStartSharp)).EndInit();
+            this.groupBox8.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSharp)).EndInit();
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
-            this.tabPageSharpen.ResumeLayout(false);
-            this.groupBox8.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.groupBox9.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSharpen)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -428,9 +509,15 @@
         private System.Windows.Forms.TabPage tabPageSharpen;
         private System.Windows.Forms.TabPage tabPageEdges;
         private System.Windows.Forms.GroupBox groupBox9;
-        private System.Windows.Forms.PictureBox pictureBoxSharpen;
+        private System.Windows.Forms.PictureBox pictureBoxStartSharp;
         private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBoxSharp;
+        private System.Windows.Forms.GroupBox groupBox10;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TrackBar trackBar2;
+        private System.Windows.Forms.GroupBox groupBox11;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TrackBar trackBar3;
     }
 }
 

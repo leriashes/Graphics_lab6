@@ -12,7 +12,8 @@ namespace Graphics_lab6
 {
     public partial class MainForm : Form
     {
-        int apert = 1;
+        int apert = 2;
+        int apertSharp = 1;
         double kSharp = 2;
         double sigma = 0.3;
 
@@ -21,12 +22,14 @@ namespace Graphics_lab6
         public MainForm()
         {
             InitializeComponent();
+            pictureBoxStartSharp.Image = new Bitmap(pictureBoxStart.Image);
             MakeNoise();
         }
 
         private void LoadImage(string fileName)
         {
             pictureBoxStart.Image = new Bitmap(fileName);
+            pictureBoxStartSharp.Image = new Bitmap(fileName);
             MakeNoise();
             LoadMini();
         }
@@ -138,7 +141,7 @@ namespace Graphics_lab6
             kernelGauss = kernel;
         }
 
-        private Bitmap MakeImgWithBordersCopy(PictureBox picture)
+        private Bitmap MakeImgWithBordersCopy(PictureBox picture, int apert)
         {
             Bitmap imgStart = new Bitmap(picture.Image);
 
@@ -185,7 +188,7 @@ namespace Graphics_lab6
 
         private void FilterGauss()
         {
-            Bitmap imgNoise = MakeImgWithBordersCopy(pictureBoxNoise);
+            Bitmap imgNoise = MakeImgWithBordersCopy(pictureBoxNoise, apert);
             Bitmap img = new Bitmap(pictureBoxNoise.Image);
 
             progressBar1.Visible = true;
@@ -267,7 +270,7 @@ namespace Graphics_lab6
 
         private void FilterMedian()
         {
-            Bitmap imgNoise = MakeImgWithBordersCopy(pictureBoxNoise);
+            Bitmap imgNoise = MakeImgWithBordersCopy(pictureBoxNoise, apert);
             Bitmap img = new Bitmap(pictureBoxNoise.Image);
 
             progressBar1.Visible = true;
@@ -307,31 +310,16 @@ namespace Graphics_lab6
             pictureBoxMedian.Image = img;
         }
 
-        private void TrackBar1_MouseUp(object sender, MouseEventArgs e)
-        {
-            apert = trackBar1.Value;
-
-            CountSigma();
-
-            FilterGauss();
-            FilterMedian();
-        }
-
-        private void TrackBar1_ValueChanged(object sender, EventArgs e)
-        {
-            label1.Text = trackBar1.Value.ToString();
-        }
-
         private void FilterSharp()
         {
-            Bitmap imgNoise = MakeImgWithBordersCopy(pictureBoxStart);
+            Bitmap imgNoise = MakeImgWithBordersCopy(pictureBoxStart, apertSharp);
             Bitmap img = new Bitmap(pictureBoxStart.Image);
 
             progressBar1.Visible = true;
             progressBar1.Maximum = img.Width * img.Height;
             progressBar1.Value = 0;
 
-            int n = apert * 2 + 1;
+            int n = apertSharp * 2 + 1;
             int t = n * n - 1;
 
             for (int i = 0; i < img.Width; i++)
@@ -348,7 +336,7 @@ namespace Graphics_lab6
                         {
                             Color pixel = imgNoise.GetPixel(i + l, j + k);
 
-                            if (k == apert && l == apert)
+                            if (k == apertSharp && l == apertSharp)
                             {
                                 R += pixel.R * (kSharp + 1);
                                 G += pixel.G * (kSharp + 1);
@@ -371,7 +359,46 @@ namespace Graphics_lab6
 
             progressBar1.Visible = false;
 
-            pictureBoxSharpen.Image = img;
+            pictureBoxSharp.Image = img;
+        }
+
+        private void TrackBar1_MouseUp(object sender, MouseEventArgs e)
+        {
+            apert = trackBar1.Value;
+
+            CountSigma();
+
+            FilterGauss();
+            FilterMedian();
+        }
+
+        private void TrackBar1_ValueChanged(object sender, EventArgs e)
+        {
+            label1.Text = trackBar1.Value.ToString();
+        }
+
+        private void TrackBar2_MouseUp(object sender, MouseEventArgs e)
+        {
+            apertSharp = trackBar2.Value;
+
+            FilterSharp();
+        }
+
+        private void TrackBar2_ValueChanged(object sender, EventArgs e)
+        {
+            label2.Text = trackBar2.Value.ToString();
+        }
+
+        private void TrackBar3_MouseUp(object sender, MouseEventArgs e)
+        {
+            kSharp = (double)trackBar3.Value / 10;
+
+            FilterSharp();
+        }
+
+        private void TrackBar3_ValueChanged(object sender, EventArgs e)
+        {
+            label3.Text = (trackBar3.Value / 10).ToString() + "." + (trackBar3.Value % 10).ToString();
         }
     }
 }
