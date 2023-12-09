@@ -122,6 +122,24 @@ namespace Graphics_lab6
                 }
             }
 
+            if (checkBoxImpuls.Checked)
+            {
+                double prob = (double)trackBar7.Value / 100;
+
+                for (int x = 0; x < img.Width; x++)
+                {
+                    for (int y = 0; y < img.Height; y++)
+                    {
+                        if (rand.NextDouble() < prob)
+                        {
+                            Color pixel = img.GetPixel(x, y);
+
+                            img.SetPixel(x, y, Color.FromArgb(pixel.A, 255, 255, 255));
+                        }
+                    }
+                }
+            }
+
             pictureBoxNoise.Image = img;    
             pictureBoxNoiseMini.Image = img;
             counted[0] = false;
@@ -583,6 +601,21 @@ namespace Graphics_lab6
         private void TrackBar6_ValueChanged(object sender, EventArgs e)
         {
             label6.Text = trackBar6.Value.ToString();
+        }
+
+        private void TrackBar7_MouseUp(object sender, MouseEventArgs e)
+        {
+            MakeNoise();
+        }
+
+        private void TrackBar7_ValueChanged(object sender, EventArgs e)
+        {
+            label7.Text = trackBar7.Value.ToString();
+        }
+
+        private void CheckBoxImpuls_CheckedChanged(object sender, EventArgs e)
+        {
+            MakeNoise();
         }
     }
 }

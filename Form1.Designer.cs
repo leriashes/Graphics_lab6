@@ -32,6 +32,11 @@
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageNoise = new System.Windows.Forms.TabPage();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
+            this.groupBox19 = new System.Windows.Forms.GroupBox();
+            this.groupBox20 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.trackBar7 = new System.Windows.Forms.TrackBar();
+            this.checkBoxImpuls = new System.Windows.Forms.CheckBox();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
             this.groupBox18 = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -90,6 +95,9 @@
             this.tabControl.SuspendLayout();
             this.tabPageNoise.SuspendLayout();
             this.groupBox15.SuspendLayout();
+            this.groupBox19.SuspendLayout();
+            this.groupBox20.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar7)).BeginInit();
             this.groupBox16.SuspendLayout();
             this.groupBox18.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar6)).BeginInit();
@@ -161,6 +169,7 @@
             // 
             // groupBox15
             // 
+            this.groupBox15.Controls.Add(this.groupBox19);
             this.groupBox15.Controls.Add(this.groupBox16);
             this.groupBox15.Location = new System.Drawing.Point(6, 6);
             this.groupBox15.Name = "groupBox15";
@@ -168,6 +177,60 @@
             this.groupBox15.TabIndex = 2;
             this.groupBox15.TabStop = false;
             this.groupBox15.Text = "Настройки помех";
+            // 
+            // groupBox19
+            // 
+            this.groupBox19.Controls.Add(this.groupBox20);
+            this.groupBox19.Controls.Add(this.checkBoxImpuls);
+            this.groupBox19.Location = new System.Drawing.Point(6, 213);
+            this.groupBox19.Name = "groupBox19";
+            this.groupBox19.Size = new System.Drawing.Size(256, 91);
+            this.groupBox19.TabIndex = 5;
+            this.groupBox19.TabStop = false;
+            this.groupBox19.Text = "Импульсные помехи";
+            // 
+            // groupBox20
+            // 
+            this.groupBox20.Controls.Add(this.label7);
+            this.groupBox20.Controls.Add(this.trackBar7);
+            this.groupBox20.Location = new System.Drawing.Point(6, 19);
+            this.groupBox20.Name = "groupBox20";
+            this.groupBox20.Size = new System.Drawing.Size(244, 67);
+            this.groupBox20.TabIndex = 4;
+            this.groupBox20.TabStop = false;
+            this.groupBox20.Text = "Процент покрытия";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(218, 22);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(19, 13);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "20";
+            // 
+            // trackBar7
+            // 
+            this.trackBar7.Location = new System.Drawing.Point(6, 19);
+            this.trackBar7.Maximum = 100;
+            this.trackBar7.Minimum = 1;
+            this.trackBar7.Name = "trackBar7";
+            this.trackBar7.Size = new System.Drawing.Size(206, 45);
+            this.trackBar7.TabIndex = 0;
+            this.trackBar7.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBar7.Value = 20;
+            this.trackBar7.ValueChanged += new System.EventHandler(this.TrackBar7_ValueChanged);
+            this.trackBar7.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TrackBar7_MouseUp);
+            // 
+            // checkBoxImpuls
+            // 
+            this.checkBoxImpuls.AutoSize = true;
+            this.checkBoxImpuls.Location = new System.Drawing.Point(118, 0);
+            this.checkBoxImpuls.Name = "checkBoxImpuls";
+            this.checkBoxImpuls.Size = new System.Drawing.Size(15, 14);
+            this.checkBoxImpuls.TabIndex = 0;
+            this.checkBoxImpuls.UseVisualStyleBackColor = true;
+            this.checkBoxImpuls.CheckedChanged += new System.EventHandler(this.CheckBoxImpuls_CheckedChanged);
             // 
             // groupBox16
             // 
@@ -761,6 +824,11 @@
             this.tabControl.ResumeLayout(false);
             this.tabPageNoise.ResumeLayout(false);
             this.groupBox15.ResumeLayout(false);
+            this.groupBox19.ResumeLayout(false);
+            this.groupBox19.PerformLayout();
+            this.groupBox20.ResumeLayout(false);
+            this.groupBox20.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar7)).EndInit();
             this.groupBox16.ResumeLayout(false);
             this.groupBox16.PerformLayout();
             this.groupBox18.ResumeLayout(false);
@@ -875,6 +943,11 @@
         private System.Windows.Forms.GroupBox groupBox18;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TrackBar trackBar6;
+        private System.Windows.Forms.GroupBox groupBox19;
+        private System.Windows.Forms.GroupBox groupBox20;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TrackBar trackBar7;
+        private System.Windows.Forms.CheckBox checkBoxImpuls;
     }
 }
 
