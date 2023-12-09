@@ -31,6 +31,17 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageNoise = new System.Windows.Forms.TabPage();
+            this.groupBox15 = new System.Windows.Forms.GroupBox();
+            this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.groupBox18 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.trackBar6 = new System.Windows.Forms.TrackBar();
+            this.groupBox17 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.trackBar5 = new System.Windows.Forms.TrackBar();
+            this.radioButtonColor = new System.Windows.Forms.RadioButton();
+            this.radioButtonBright = new System.Windows.Forms.RadioButton();
+            this.checkBoxNoise = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.pictureBoxNoise = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -59,6 +70,9 @@
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.pictureBoxSharp = new System.Windows.Forms.PictureBox();
             this.tabPageEdges = new System.Windows.Forms.TabPage();
+            this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
@@ -73,11 +87,14 @@
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.openFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.groupBox14 = new System.Windows.Forms.GroupBox();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.tabControl.SuspendLayout();
             this.tabPageNoise.SuspendLayout();
+            this.groupBox15.SuspendLayout();
+            this.groupBox16.SuspendLayout();
+            this.groupBox18.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar6)).BeginInit();
+            this.groupBox17.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar5)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNoise)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -103,6 +120,7 @@
             this.groupBox8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSharp)).BeginInit();
             this.tabPageEdges.SuspendLayout();
+            this.groupBox14.SuspendLayout();
             this.groupBox13.SuspendLayout();
             this.groupBox12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar4)).BeginInit();
@@ -111,7 +129,6 @@
             this.groupBoxStartEdges.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStartEdges)).BeginInit();
             this.menuStrip.SuspendLayout();
-            this.groupBox14.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -132,6 +149,7 @@
             // tabPageNoise
             // 
             this.tabPageNoise.BackColor = System.Drawing.Color.Linen;
+            this.tabPageNoise.Controls.Add(this.groupBox15);
             this.tabPageNoise.Controls.Add(this.groupBox2);
             this.tabPageNoise.Controls.Add(this.groupBox1);
             this.tabPageNoise.Location = new System.Drawing.Point(4, 4);
@@ -140,6 +158,131 @@
             this.tabPageNoise.Size = new System.Drawing.Size(1388, 547);
             this.tabPageNoise.TabIndex = 0;
             this.tabPageNoise.Text = "Шум";
+            // 
+            // groupBox15
+            // 
+            this.groupBox15.Controls.Add(this.groupBox16);
+            this.groupBox15.Location = new System.Drawing.Point(6, 6);
+            this.groupBox15.Name = "groupBox15";
+            this.groupBox15.Size = new System.Drawing.Size(268, 535);
+            this.groupBox15.TabIndex = 2;
+            this.groupBox15.TabStop = false;
+            this.groupBox15.Text = "Настройки помех";
+            // 
+            // groupBox16
+            // 
+            this.groupBox16.Controls.Add(this.groupBox18);
+            this.groupBox16.Controls.Add(this.groupBox17);
+            this.groupBox16.Controls.Add(this.radioButtonColor);
+            this.groupBox16.Controls.Add(this.radioButtonBright);
+            this.groupBox16.Controls.Add(this.checkBoxNoise);
+            this.groupBox16.Location = new System.Drawing.Point(6, 19);
+            this.groupBox16.Name = "groupBox16";
+            this.groupBox16.Size = new System.Drawing.Size(256, 188);
+            this.groupBox16.TabIndex = 0;
+            this.groupBox16.TabStop = false;
+            this.groupBox16.Text = "Шум";
+            // 
+            // groupBox18
+            // 
+            this.groupBox18.Controls.Add(this.label6);
+            this.groupBox18.Controls.Add(this.trackBar6);
+            this.groupBox18.Location = new System.Drawing.Point(6, 116);
+            this.groupBox18.Name = "groupBox18";
+            this.groupBox18.Size = new System.Drawing.Size(244, 67);
+            this.groupBox18.TabIndex = 4;
+            this.groupBox18.TabStop = false;
+            this.groupBox18.Text = "Процент покрытия";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(218, 22);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(19, 13);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "20";
+            // 
+            // trackBar6
+            // 
+            this.trackBar6.Location = new System.Drawing.Point(6, 19);
+            this.trackBar6.Maximum = 100;
+            this.trackBar6.Minimum = 1;
+            this.trackBar6.Name = "trackBar6";
+            this.trackBar6.Size = new System.Drawing.Size(206, 45);
+            this.trackBar6.TabIndex = 0;
+            this.trackBar6.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBar6.Value = 20;
+            this.trackBar6.ValueChanged += new System.EventHandler(this.TrackBar6_ValueChanged);
+            this.trackBar6.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TrackBar6_MouseUp);
+            // 
+            // groupBox17
+            // 
+            this.groupBox17.Controls.Add(this.label5);
+            this.groupBox17.Controls.Add(this.trackBar5);
+            this.groupBox17.Location = new System.Drawing.Point(6, 43);
+            this.groupBox17.Name = "groupBox17";
+            this.groupBox17.Size = new System.Drawing.Size(244, 67);
+            this.groupBox17.TabIndex = 3;
+            this.groupBox17.TabStop = false;
+            this.groupBox17.Text = "Сила";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(218, 22);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(19, 13);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "40";
+            // 
+            // trackBar5
+            // 
+            this.trackBar5.Location = new System.Drawing.Point(6, 19);
+            this.trackBar5.Maximum = 255;
+            this.trackBar5.Minimum = 1;
+            this.trackBar5.Name = "trackBar5";
+            this.trackBar5.Size = new System.Drawing.Size(206, 45);
+            this.trackBar5.TabIndex = 0;
+            this.trackBar5.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBar5.Value = 40;
+            this.trackBar5.ValueChanged += new System.EventHandler(this.TrackBar5_ValueChanged);
+            this.trackBar5.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TrackBar5_MouseUp);
+            // 
+            // radioButtonColor
+            // 
+            this.radioButtonColor.AutoSize = true;
+            this.radioButtonColor.Location = new System.Drawing.Point(144, 20);
+            this.radioButtonColor.Name = "radioButtonColor";
+            this.radioButtonColor.Size = new System.Drawing.Size(92, 17);
+            this.radioButtonColor.TabIndex = 2;
+            this.radioButtonColor.Text = "Цветной шум";
+            this.radioButtonColor.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonBright
+            // 
+            this.radioButtonBright.AutoSize = true;
+            this.radioButtonBright.Checked = true;
+            this.radioButtonBright.Location = new System.Drawing.Point(6, 20);
+            this.radioButtonBright.Name = "radioButtonBright";
+            this.radioButtonBright.Size = new System.Drawing.Size(106, 17);
+            this.radioButtonBright.TabIndex = 1;
+            this.radioButtonBright.TabStop = true;
+            this.radioButtonBright.Text = "Шум по яркости";
+            this.radioButtonBright.UseVisualStyleBackColor = true;
+            this.radioButtonBright.CheckedChanged += new System.EventHandler(this.RadioButtonBright_CheckedChanged);
+            // 
+            // checkBoxNoise
+            // 
+            this.checkBoxNoise.AutoSize = true;
+            this.checkBoxNoise.Checked = true;
+            this.checkBoxNoise.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxNoise.Location = new System.Drawing.Point(38, 0);
+            this.checkBoxNoise.Name = "checkBoxNoise";
+            this.checkBoxNoise.Size = new System.Drawing.Size(15, 14);
+            this.checkBoxNoise.TabIndex = 0;
+            this.checkBoxNoise.UseVisualStyleBackColor = true;
+            this.checkBoxNoise.CheckedChanged += new System.EventHandler(this.CheckBox1_CheckedChanged);
             // 
             // groupBox2
             // 
@@ -430,6 +573,40 @@
             this.tabPageEdges.TabIndex = 3;
             this.tabPageEdges.Text = "Оконтуривание";
             // 
+            // groupBox14
+            // 
+            this.groupBox14.Controls.Add(this.radioButton3);
+            this.groupBox14.Controls.Add(this.radioButton4);
+            this.groupBox14.Location = new System.Drawing.Point(6, 133);
+            this.groupBox14.Name = "groupBox14";
+            this.groupBox14.Size = new System.Drawing.Size(268, 48);
+            this.groupBox14.TabIndex = 9;
+            this.groupBox14.TabStop = false;
+            this.groupBox14.Text = "Алгоритм";
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(147, 19);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(68, 17);
+            this.radioButton3.TabIndex = 1;
+            this.radioButton3.Text = "Превита";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // radioButton4
+            // 
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.Checked = true;
+            this.radioButton4.Location = new System.Drawing.Point(6, 19);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(62, 17);
+            this.radioButton4.TabIndex = 0;
+            this.radioButton4.TabStop = true;
+            this.radioButton4.Text = "Собеля";
+            this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
+            // 
             // groupBox13
             // 
             this.groupBox13.Controls.Add(this.radioButton2);
@@ -565,40 +742,6 @@
             // 
             this.openFileDialog.FileName = "openFileDialog";
             // 
-            // groupBox14
-            // 
-            this.groupBox14.Controls.Add(this.radioButton3);
-            this.groupBox14.Controls.Add(this.radioButton4);
-            this.groupBox14.Location = new System.Drawing.Point(6, 133);
-            this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Size = new System.Drawing.Size(268, 48);
-            this.groupBox14.TabIndex = 9;
-            this.groupBox14.TabStop = false;
-            this.groupBox14.Text = "Алгоритм";
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(147, 19);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(68, 17);
-            this.radioButton3.TabIndex = 1;
-            this.radioButton3.Text = "Превита";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // radioButton4
-            // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Checked = true;
-            this.radioButton4.Location = new System.Drawing.Point(6, 19);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(62, 17);
-            this.radioButton4.TabIndex = 0;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "Собеля";
-            this.radioButton4.UseVisualStyleBackColor = true;
-            this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -617,6 +760,15 @@
             this.Text = "Лабораторная работа 6";
             this.tabControl.ResumeLayout(false);
             this.tabPageNoise.ResumeLayout(false);
+            this.groupBox15.ResumeLayout(false);
+            this.groupBox16.ResumeLayout(false);
+            this.groupBox16.PerformLayout();
+            this.groupBox18.ResumeLayout(false);
+            this.groupBox18.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar6)).EndInit();
+            this.groupBox17.ResumeLayout(false);
+            this.groupBox17.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar5)).EndInit();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNoise)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -645,6 +797,8 @@
             this.groupBox8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSharp)).EndInit();
             this.tabPageEdges.ResumeLayout(false);
+            this.groupBox14.ResumeLayout(false);
+            this.groupBox14.PerformLayout();
             this.groupBox13.ResumeLayout(false);
             this.groupBox13.PerformLayout();
             this.groupBox12.ResumeLayout(false);
@@ -656,8 +810,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStartEdges)).EndInit();
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
-            this.groupBox14.ResumeLayout(false);
-            this.groupBox14.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -712,6 +864,17 @@
         private System.Windows.Forms.GroupBox groupBox14;
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.GroupBox groupBox15;
+        private System.Windows.Forms.GroupBox groupBox16;
+        private System.Windows.Forms.RadioButton radioButtonColor;
+        private System.Windows.Forms.RadioButton radioButtonBright;
+        private System.Windows.Forms.CheckBox checkBoxNoise;
+        private System.Windows.Forms.GroupBox groupBox17;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TrackBar trackBar5;
+        private System.Windows.Forms.GroupBox groupBox18;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TrackBar trackBar6;
     }
 }
 

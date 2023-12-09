@@ -85,34 +85,46 @@ namespace Graphics_lab6
 
             Random rand = new Random();
 
-            double prob = 0.2;
-            int val = 40;
-            int count = 0;
 
-
-            for (int x = 0; x < img.Width; x++) 
+            if (checkBoxNoise.Checked)
             {
-                for (int y = 0; y < img.Height; y++)
+                double prob = (double)trackBar6.Value / 100;
+                int val = trackBar5.Value;
+
+                for (int x = 0; x < img.Width; x++)
                 {
-                    if (rand.NextDouble() < prob)
+                    for (int y = 0; y < img.Height; y++)
                     {
-                        Color pixel = img.GetPixel(x, y);
+                        if (rand.NextDouble() < prob)
+                        {
+                            Color pixel = img.GetPixel(x, y);
 
-                        int R, G, B;
-                        int value = rand.Next(-val, val + 1);
+                            int R, G, B;
 
-                        R = pixel.R + value;
-                        G = pixel.G + value;
-                        B = pixel.B + value;
+                            if (radioButtonBright.Checked)
+                            {
+                                int value = rand.Next(-val, val + 1);
 
-                        img.SetPixel(x, y, Color.FromArgb(pixel.A, NormalizeColor(R), NormalizeColor(G), NormalizeColor(B)));
+                                R = pixel.R + value;
+                                G = pixel.G + value;
+                                B = pixel.B + value;
+                            }
+                            else
+                            {
+                                R = pixel.R + rand.Next(-val, val + 1);
+                                G = pixel.G + rand.Next(-val, val + 1);
+                                B = pixel.B + rand.Next(-val, val + 1);
+                            }
 
-                        count += 1;
+                            img.SetPixel(x, y, Color.FromArgb(pixel.A, NormalizeColor(R), NormalizeColor(G), NormalizeColor(B)));
+                        }
                     }
                 }
             }
 
-            pictureBoxNoise.Image = img;        
+            pictureBoxNoise.Image = img;    
+            pictureBoxNoiseMini.Image = img;
+            counted[0] = false;
         }
 
         private int NormalizeColor(int color)
@@ -530,6 +542,36 @@ namespace Graphics_lab6
         {
             algorithmSobel = radioButton4.Checked;
             FilterEdges();
+        }
+
+        private void CheckBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            MakeNoise();
+        }
+
+        private void RadioButtonBright_CheckedChanged(object sender, EventArgs e)
+        {
+            MakeNoise();
+        }
+
+        private void TrackBar5_MouseUp(object sender, MouseEventArgs e)
+        {
+            MakeNoise();
+        }
+
+        private void TrackBar5_ValueChanged(object sender, EventArgs e)
+        {
+            label5.Text = trackBar5.Value.ToString();
+        }
+
+        private void TrackBar6_MouseUp(object sender, MouseEventArgs e)
+        {
+            MakeNoise();
+        }
+
+        private void TrackBar6_ValueChanged(object sender, EventArgs e)
+        {
+            label6.Text = trackBar6.Value.ToString();
         }
     }
 }
