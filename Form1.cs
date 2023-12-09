@@ -16,7 +16,11 @@ namespace Graphics_lab6
         int apertSharp = 1;
         double kSharp = 2;
         double sigma = 0.3;
-        int alpha = 200;
+        int alpha = 100;
+        bool whiteBackground = false;
+        bool algorithmSobel = true;
+
+        bool[] counted = new bool[3];
 
         double[] kernelGauss;
 
@@ -24,7 +28,18 @@ namespace Graphics_lab6
         {
             InitializeComponent();
             pictureBoxStartSharp.Image = new Bitmap(pictureBoxStart.Image);
+            pictureBoxStartEdges.Image = new Bitmap(pictureBoxStart.Image);
+            SetImages();
+        }
+
+        private void SetImages()
+        {
             MakeNoise();
+            LoadMini();
+
+            counted[0] = counted[1] = counted[2] = false;
+
+            LoadResults();
         }
 
         private void LoadImage(string fileName)
@@ -32,16 +47,35 @@ namespace Graphics_lab6
             pictureBoxStart.Image = new Bitmap(fileName);
             pictureBoxStartSharp.Image = new Bitmap(fileName);
             pictureBoxStartEdges.Image = new Bitmap(fileName);
-            MakeNoise();
-            LoadMini();
+            SetImages();
         }
 
         private void LoadMini() 
         {
-            if (tabControl.SelectedIndex == 1)
+            pictureBoxStartMini.Image = pictureBoxStart.Image;
+            pictureBoxNoiseMini.Image = pictureBoxNoise.Image;
+        }
+
+        private void LoadResults()
+        {
+            if (tabControl.SelectedIndex == 1 && !counted[0])
             {
-                pictureBoxStartMini.Image = pictureBoxStart.Image;
-                pictureBoxNoiseMini.Image = pictureBoxNoise.Image;
+                CountSigma();
+
+                FilterMedian();
+                FilterGauss();
+
+                counted[0] = true;
+            }
+            else if (tabControl.SelectedIndex == 2 && !counted[1])
+            {
+                FilterSharp();
+                counted[1] = true;
+            }
+            else if (tabControl.SelectedIndex == 3 && !counted[2])
+            {
+                FilterEdges();
+                counted[2] = true;
             }
         }
 
@@ -105,23 +139,7 @@ namespace Graphics_lab6
 
         private void TabControl_Selected(object sender, TabControlEventArgs e)
         {
-            LoadMini();
-
-            if (tabControl.SelectedIndex == 1)
-            {
-                CountSigma();
-
-                FilterGauss();
-                FilterMedian();
-            }
-            else if (tabControl.SelectedIndex == 2)
-            {
-                FilterSharp();
-            }
-            else if (tabControl.SelectedIndex == 3)
-            {
-                FilterEdges();
-            }
+            LoadResults();
         }
 
         private void CountSigma()
@@ -400,7 +418,13 @@ namespace Graphics_lab6
 
             int n = 3;
 
-            int[] matrixSobel = new int[9] { -1, -2, -1, 0, 0, 0, 1, 2, 1};
+            int[] matrix = new int[9] { -1, -1, -1, 0, 0, 0, 1, 1, 1};
+
+            if (algorithmSobel)
+            {
+                matrix[1] = -2;
+                matrix[7] = 2;
+            }
 
             for (int i = 0; i < img.Width; i++)
             {
@@ -414,7 +438,7 @@ namespace Graphics_lab6
                         {
                             Color pixel = imgStart.GetPixel(i + l, j + k);
 
-                            Y += pixel.R * (matrixSobel[k * n + l] + matrixSobel[l * n + k]);
+                            Y += pixel.R * (matrix[k * n + l] + matrix[l * n + k]);
                         }
                     }
 
@@ -428,6 +452,12 @@ namespace Graphics_lab6
                     {
                         Y = 0;
                     }
+
+                    if (whiteBackground)
+                    {
+                        Y = 255 - Y;
+                    }
+
                     img.SetPixel(i, j, Color.FromArgb(img.GetPixel(i, j).A, Y, Y, Y));
 
                     progressBar1.Value += 1;
@@ -476,6 +506,30 @@ namespace Graphics_lab6
         private void TrackBar3_ValueChanged(object sender, EventArgs e)
         {
             label3.Text = (trackBar3.Value / 10).ToString() + "." + (trackBar3.Value % 10).ToString();
+        }
+
+        private void TrackBar4_MouseUp(object sender, MouseEventArgs e)
+        {
+            alpha = trackBar4.Value;
+
+            FilterEdges();
+        }
+
+        private void TrackBar4_ValueChanged(object sender, EventArgs e)
+        {
+            label4.Text = trackBar4.Value.ToString();
+        }
+
+        private void RadioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            whiteBackground = !radioButton1.Checked;
+            FilterEdges();
+        }
+
+        private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        {
+            algorithmSobel = radioButton4.Checked;
+            FilterEdges();
         }
     }
 }

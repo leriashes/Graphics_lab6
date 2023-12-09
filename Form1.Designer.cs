@@ -59,6 +59,12 @@
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.pictureBoxSharp = new System.Windows.Forms.PictureBox();
             this.tabPageEdges = new System.Windows.Forms.TabPage();
+            this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.trackBar4 = new System.Windows.Forms.TrackBar();
             this.groupBoxEdges = new System.Windows.Forms.GroupBox();
             this.pictureBoxEdges = new System.Windows.Forms.PictureBox();
             this.groupBoxStartEdges = new System.Windows.Forms.GroupBox();
@@ -67,6 +73,9 @@
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.openFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.tabControl.SuspendLayout();
             this.tabPageNoise.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -94,11 +103,15 @@
             this.groupBox8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSharp)).BeginInit();
             this.tabPageEdges.SuspendLayout();
+            this.groupBox13.SuspendLayout();
+            this.groupBox12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar4)).BeginInit();
             this.groupBoxEdges.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEdges)).BeginInit();
             this.groupBoxStartEdges.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStartEdges)).BeginInit();
             this.menuStrip.SuspendLayout();
+            this.groupBox14.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -406,6 +419,9 @@
             // tabPageEdges
             // 
             this.tabPageEdges.BackColor = System.Drawing.Color.Linen;
+            this.tabPageEdges.Controls.Add(this.groupBox14);
+            this.tabPageEdges.Controls.Add(this.groupBox13);
+            this.tabPageEdges.Controls.Add(this.groupBox12);
             this.tabPageEdges.Controls.Add(this.groupBoxEdges);
             this.tabPageEdges.Controls.Add(this.groupBoxStartEdges);
             this.tabPageEdges.Location = new System.Drawing.Point(4, 4);
@@ -414,10 +430,76 @@
             this.tabPageEdges.TabIndex = 3;
             this.tabPageEdges.Text = "Оконтуривание";
             // 
+            // groupBox13
+            // 
+            this.groupBox13.Controls.Add(this.radioButton2);
+            this.groupBox13.Controls.Add(this.radioButton1);
+            this.groupBox13.Location = new System.Drawing.Point(6, 79);
+            this.groupBox13.Name = "groupBox13";
+            this.groupBox13.Size = new System.Drawing.Size(268, 48);
+            this.groupBox13.TabIndex = 8;
+            this.groupBox13.TabStop = false;
+            this.groupBox13.Text = "Цвет";
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(147, 19);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(115, 17);
+            this.radioButton2.TabIndex = 1;
+            this.radioButton2.Text = "Чёрный на белом";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Location = new System.Drawing.Point(6, 19);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(113, 17);
+            this.radioButton1.TabIndex = 0;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Белый на чёрном";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.RadioButton1_CheckedChanged);
+            // 
+            // groupBox12
+            // 
+            this.groupBox12.Controls.Add(this.label4);
+            this.groupBox12.Controls.Add(this.trackBar4);
+            this.groupBox12.Location = new System.Drawing.Point(6, 6);
+            this.groupBox12.Name = "groupBox12";
+            this.groupBox12.Size = new System.Drawing.Size(268, 67);
+            this.groupBox12.TabIndex = 7;
+            this.groupBox12.TabStop = false;
+            this.groupBox12.Text = "Пороговое значение";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(230, 23);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(25, 13);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "100";
+            // 
+            // trackBar4
+            // 
+            this.trackBar4.Location = new System.Drawing.Point(6, 19);
+            this.trackBar4.Maximum = 255;
+            this.trackBar4.Name = "trackBar4";
+            this.trackBar4.Size = new System.Drawing.Size(218, 45);
+            this.trackBar4.TabIndex = 0;
+            this.trackBar4.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBar4.Value = 100;
+            this.trackBar4.ValueChanged += new System.EventHandler(this.TrackBar4_ValueChanged);
+            this.trackBar4.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TrackBar4_MouseUp);
+            // 
             // groupBoxEdges
             // 
             this.groupBoxEdges.Controls.Add(this.pictureBoxEdges);
-            this.groupBoxEdges.Location = new System.Drawing.Point(837, 3);
+            this.groupBoxEdges.Location = new System.Drawing.Point(834, 6);
             this.groupBoxEdges.Name = "groupBoxEdges";
             this.groupBoxEdges.Size = new System.Drawing.Size(548, 535);
             this.groupBoxEdges.TabIndex = 6;
@@ -436,7 +518,7 @@
             // groupBoxStartEdges
             // 
             this.groupBoxStartEdges.Controls.Add(this.pictureBoxStartEdges);
-            this.groupBoxStartEdges.Location = new System.Drawing.Point(283, 3);
+            this.groupBoxStartEdges.Location = new System.Drawing.Point(280, 6);
             this.groupBoxStartEdges.Name = "groupBoxStartEdges";
             this.groupBoxStartEdges.Size = new System.Drawing.Size(548, 535);
             this.groupBoxStartEdges.TabIndex = 5;
@@ -455,7 +537,7 @@
             // progressBar1
             // 
             this.progressBar1.ForeColor = System.Drawing.Color.PaleTurquoise;
-            this.progressBar1.Location = new System.Drawing.Point(1093, 1);
+            this.progressBar1.Location = new System.Drawing.Point(1093, 2);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(299, 20);
             this.progressBar1.Step = 1;
@@ -482,6 +564,40 @@
             // openFileDialog
             // 
             this.openFileDialog.FileName = "openFileDialog";
+            // 
+            // groupBox14
+            // 
+            this.groupBox14.Controls.Add(this.radioButton3);
+            this.groupBox14.Controls.Add(this.radioButton4);
+            this.groupBox14.Location = new System.Drawing.Point(6, 133);
+            this.groupBox14.Name = "groupBox14";
+            this.groupBox14.Size = new System.Drawing.Size(268, 48);
+            this.groupBox14.TabIndex = 9;
+            this.groupBox14.TabStop = false;
+            this.groupBox14.Text = "Алгоритм";
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(147, 19);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(68, 17);
+            this.radioButton3.TabIndex = 1;
+            this.radioButton3.Text = "Превита";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // radioButton4
+            // 
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.Checked = true;
+            this.radioButton4.Location = new System.Drawing.Point(6, 19);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(62, 17);
+            this.radioButton4.TabIndex = 0;
+            this.radioButton4.TabStop = true;
+            this.radioButton4.Text = "Собеля";
+            this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
             // 
             // MainForm
             // 
@@ -529,12 +645,19 @@
             this.groupBox8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSharp)).EndInit();
             this.tabPageEdges.ResumeLayout(false);
+            this.groupBox13.ResumeLayout(false);
+            this.groupBox13.PerformLayout();
+            this.groupBox12.ResumeLayout(false);
+            this.groupBox12.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar4)).EndInit();
             this.groupBoxEdges.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEdges)).EndInit();
             this.groupBoxStartEdges.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStartEdges)).EndInit();
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
+            this.groupBox14.ResumeLayout(false);
+            this.groupBox14.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -580,6 +703,15 @@
         private System.Windows.Forms.PictureBox pictureBoxEdges;
         private System.Windows.Forms.GroupBox groupBoxStartEdges;
         private System.Windows.Forms.PictureBox pictureBoxStartEdges;
+        private System.Windows.Forms.GroupBox groupBox12;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TrackBar trackBar4;
+        private System.Windows.Forms.GroupBox groupBox13;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.GroupBox groupBox14;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton radioButton4;
     }
 }
 
