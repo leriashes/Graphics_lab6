@@ -170,7 +170,18 @@ namespace Graphics_lab6
             {
                 for (int j = -apert; j < apert + 1; j++) 
                 {
-                    kernel[(i + apert) * n + j + apert] = Math.Exp(-(i * i + j * j) / (2 * sigma * sigma)) / (2 * sigma * sigma * Math.PI);
+                    kernel[(i + apert) * n + j + apert] = Math.Exp(-(i * i + j * j) / (2 * sigma * sigma));
+                }
+            }
+
+            double A = kernel.Sum();
+
+            for (int i = -apert; i < apert + 1; i++)
+            {
+                for (int j = -apert; j < apert + 1; j++)
+                {
+
+                    kernel[(i + apert) * n + j + apert] /= A;
                 }
             }
 
