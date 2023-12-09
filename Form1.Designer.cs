@@ -352,7 +352,7 @@
             // 
             this.pictureBoxGauss.Location = new System.Drawing.Point(6, 19);
             this.pictureBoxGauss.Name = "pictureBoxGauss";
-            this.pictureBoxGauss.Size = new System.Drawing.Size(535, 510);
+            this.pictureBoxGauss.Size = new System.Drawing.Size(536, 510);
             this.pictureBoxGauss.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxGauss.TabIndex = 3;
             this.pictureBoxGauss.TabStop = false;
@@ -554,7 +554,7 @@
             // 
             this.pictureBoxSharp.Location = new System.Drawing.Point(6, 19);
             this.pictureBoxSharp.Name = "pictureBoxSharp";
-            this.pictureBoxSharp.Size = new System.Drawing.Size(535, 510);
+            this.pictureBoxSharp.Size = new System.Drawing.Size(536, 510);
             this.pictureBoxSharp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxSharp.TabIndex = 3;
             this.pictureBoxSharp.TabStop = false;
@@ -687,7 +687,7 @@
             // 
             this.pictureBoxEdges.Location = new System.Drawing.Point(6, 19);
             this.pictureBoxEdges.Name = "pictureBoxEdges";
-            this.pictureBoxEdges.Size = new System.Drawing.Size(535, 510);
+            this.pictureBoxEdges.Size = new System.Drawing.Size(536, 510);
             this.pictureBoxEdges.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxEdges.TabIndex = 3;
             this.pictureBoxEdges.TabStop = false;
